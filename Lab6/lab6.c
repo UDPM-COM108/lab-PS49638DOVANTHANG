@@ -83,35 +83,11 @@ void sapxepmanggiamdan() {
     }
     printf("\n");
 }
-//______________________________________________BAI 4____________________________________________________________
-void binhphuongptmang2c() {
-    int n, m;
-    int i,j;
-    printf("nhap so hang:");
-    scanf("%d", &n);
-    printf("nhap so cot: ");
-    scanf("%d", &m);
-    int mang[n][m]; 
-    printf("\nnhap ma tran (%dx%d) \n", n, m);
-    for ( i = 0; i < n; i++) {
-        for ( j = 0; j < m; j++) {
-            printf("nhap phan tu [%d][%d]: ", i, j);
-            scanf("%d", &mang[i][j]);
-        }
-    }
-    printf("\n ma tran binh phuong \n");
-    for ( i = 0; i < n; i++) {
-        for ( j = 0; j < m; j++) {
-            int binh_phuong = mang[i][j] * mang[i][j];
-            printf("%5d ", binh_phuong); 
-        }
-        printf("\n"); 
-    }
-}
+
 int main() {
     tbtongchiahetcho3();
     timmaxmintrongmang();
     sapxepmanggiamdan();
-    binhphuongptmang2c();
     return 0;
+
 }
