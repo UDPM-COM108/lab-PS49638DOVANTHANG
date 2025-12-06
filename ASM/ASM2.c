@@ -3,35 +3,45 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
+
 //____________________________________cac ham chuc nang cua menu_______________________________
 
 //nhap vao 1 so nguyen ==> kiem tra so nguyen,so nguyen to,so chinh phuong
 void chucnang1(){
-    int n;
+    float n;
+    int b;
     printf("Nhap vao so nguyen:");
-    scanf("%d",&n);
-    printf("%d la mot so nguyen\n",n);
-    //so nguyen to
-    if (n>1){
-        if (n%2!=0){
-            if (n%3!=0){
-                printf("%d la mot so nguyen to\n",n);
+    scanf("%f",&n);
+    if (n/(int)n!=0){
+        printf("%.0f la so nguyen\n",n);
+        //so nguyen to
+        b=(int)n;
+        if (b==2){
+            printf("%d la mot so nguyen to\n",b);
+        }
+        if (b>1){
+            if (b%2!=0){
+                if (b%3!=0){
+                    printf("%d la mot so nguyen to\n",b);
+                }
             }
         }
+        else{
+            printf("%d khong la so nguyen to\n",b);
+        }
+        //so chinh phuong
+        int can=sqrt(b);
+        if (can*can==b||b==0||b==1){
+            printf("%d la mot so chinh phuong\n",b);
+        }
+        else{
+            printf("%d khong la so chinh phuong\n",b);
+        }
     }
-    else if (n==2){
-        printf("%d la mot so nguyen to\n",n);
-    }
-    else{
-        printf("%d khong la so nguyen to\n",n);
-    }
-    //so chinh phuong
-    int can=sqrt(n);
-    if (can*can==n||n==0||n==1){
-        printf("%d la mot so chinh phuong\n",n);
-    }
-    else{
-        printf("%d khong la so chinh phuong\n",n);
+    else {
+        printf("%f khong la so nguyen\n",n);
+        printf("%f khong la so nguyen to\n",n);
+        printf("%f khong la so chinh phuong\n",n);
     }
 }
 
@@ -174,9 +184,19 @@ void chucnang6(){
     }
 }
 
-//nhap vao so phan tram vay toi da(so phan tram tra gop) ==> 
-void chucnang7(){}
-void chucnang8(){}
+//nhap vao so phan tram vay toi da(so phan tram tra gop) ==> so tien tra truoc va so tien tra hang thang cho den het ky han vay
+void chucnang7(){
+    float sophantram,tratruoc,trahangthang;
+    printf("Nhap vao so phan tram vay toi da:");
+    scanf("%f",&sophantram);
+    tratruoc=((100-sophantram)/100)*500000000;
+    trahangthang=(500000000-tratruoc)/(24*12);
+    printf("so tien can tra truoc la %.2f\n",tratruoc);
+    printf("so tien tra hang thang %.2f\n",trahangthang*(1+(0.15/12)));
+}
+void chucnang8(){
+    
+}
 
 int main(){
 //_______________________________________________Menu chuc nang_______________________________________________
