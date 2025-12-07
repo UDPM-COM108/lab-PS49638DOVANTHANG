@@ -12,7 +12,7 @@ void chucnang1(){
     int b;
     printf("Nhap vao so nguyen:");
     scanf("%f",&n);
-    if (n/(int)n!=0){
+    if (n/(int)n==0){
         printf("%.0f la so nguyen\n",n);
         //so nguyen to
         b=(int)n;
@@ -194,10 +194,125 @@ void chucnang7(){
     printf("so tien can tra truoc la %.2f\n",tratruoc);
     printf("so tien tra hang thang %.2f\n",trahangthang*(1+(0.15/12)));
 }
+
+//nhap vao ho ten va diem cua sinh vien ==> xuat ra danh sach sinh vien giam dan
 void chucnang8(){
-    
+    //nhap danh sach
+    int n;
+    printf("Nhap so sinh vien: ");
+    scanf("%d", &n);
+    getchar();
+    struct SinhVien {
+        char ten[50];
+        float diem;
+        char hocluc[20];
+    };
+    struct SinhVien sv[n];
+    for (int i = 0; i < n; i++) {
+        printf("\nNhap ten sinh vien %d: ", i + 1);
+        fgets(sv[i].ten, sizeof(sv[i].ten), stdin);
+        sv[i].ten[strcspn(sv[i].ten, "\n")] = '\0';
+        // nhap diem va kiem tra hoc luc
+        do {
+            printf("Nhap diem (0 - 10): ");
+            scanf("%f", &sv[i].diem);
+            if (sv[i].diem < 0 || sv[i].diem > 10)
+                printf("Diem khong hop le! Vui long nhap lai.\n");
+        } while (sv[i].diem < 0 || sv[i].diem > 10);
+        getchar();
+        if (sv[i].diem >= 9.0)
+            strcpy(sv[i].hocluc, "Xuat sac");
+        else if (sv[i].diem >= 8.0)
+            strcpy(sv[i].hocluc, "Gioi");
+        else if (sv[i].diem >= 6.5)
+            strcpy(sv[i].hocluc, "Kha");
+        else if (sv[i].diem >= 5.0)
+            strcpy(sv[i].hocluc, "Trung binh");
+        else
+            strcpy(sv[i].hocluc, "Yeu");
+    }
+    //sap xep diem giam dan
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (sv[i].diem < sv[j].diem) {
+                struct SinhVien tmp = sv[i];
+                sv[i] = sv[j];
+                sv[j] = tmp;
+            }
+        }
+    }
+    //xuat danh sach
+    printf("\n===== DANH SACH SINH VIEN GIAM DAN =====\n");
+    printf("%-25s %-10s %-15s\n", "Ho ten", "Diem", "Hoc luc");
+    for (int i = 0; i < n; i++) {
+        printf("%-25s %-10.2f %-15s\n",
+               sv[i].ten, sv[i].diem, sv[i].hocluc);
+    }
+    printf("\n--------------------------------------------\n");
+}
+//nhap vao 2 so (1-15)==> hien thi thong tin trung giai
+void chucnang9(){
+    int so1,so2,sotrung1,sotrung2;
+    // nhap 2 so may man
+    printf("Nhap vao 2 so (1 - 15): ");
+    scanf("%d %d", &so1, &so2);
+    // Kiểm tra hợp lệ
+    if (so1 < 1 || so1 > 15 || so2 < 1 || so2 > 15){
+        printf("so khong hop le vui long nhap lai\n");
+        return;
+    }
+    //sinh si ngau nhien tu a-b theo ct=a+rand()%(b-a+1)
+    sotrung1 = 1 + rand() % 15;
+    sotrung2 = 1 + rand() % 15;
+    printf("2 So trung thuong la: %d %d\n", sotrung1, sotrung2);
+    // Đếm số trúng
+    int bd = 0;
+    if (so1 == sotrung1 || so1 == sotrung2) bd++;
+    if (so2 == sotrung1 || so2 == sotrung2) bd++;
+    if (bd == 2)
+        printf("Chuc mung ban da trung GIAI NHAT\n");
+    else if (bd == 1)
+        printf("Chuc mung ban da trung GIAI NHI\n");
+    else
+        printf("Chuc ban may man lan sau\n");
 }
 
+//nhap vao 2 phan so ==> tong hieu tich thuong cua 2 phan so
+void chucnang10(){
+    //nhap 2 phans
+    int tu1,mau1,tu2,mau2;
+    printf("Nhap phan so thu 1 (tu mau): ");
+    scanf("%d %d", &tu1, &mau1);
+    printf("Nhap phan so thu 2 (tu mau): ");
+    scanf("%d %d", &tu2, &mau2);
+    if (mau1 == 0 || mau2 == 0){
+        printf("Mau so khong duoc bang 0!\n");
+        return;
+    }
+    // + cong
+    int congtu = tu1 * mau2 + tu2 * mau1;
+    int congmau = mau1 * mau2;
+    // - tru
+    int trutu = tu1 * mau2 - tu2 * mau1;
+    int trumau = mau1 * mau2;
+    // * nhan
+    int nhantu = tu1 * tu2;
+    int nhanmau = mau1 * mau2;
+    // / chia
+    int chiatu = tu1 * mau2;
+    int chiamau = mau1 * tu2;
+    if (chiamau == 0){
+        printf("Khong the chia! Mau so bang 0.\n");
+        return;
+    }
+    printf("\n===== KET QUA =====\n");
+    printf("Cong: %d/%d\n", congtu, congmau);
+    printf("Tru : %d/%d\n", trutu, trumau);
+    printf("Nhan: %d/%d\n", nhantu, nhanmau);
+    printf("Chia: %d/%d\n", chiatu, chiamau);
+}
+
+//menu
 int main(){
 //_______________________________________________Menu chuc nang_______________________________________________
     int luachon;
@@ -252,17 +367,17 @@ int main(){
                 break;
                 }
             case 9:{
+                chucnang9();
                 break;
                 }
             case 10:{
+                chucnang10();
                 break;
                 }
             default:{
                 printf("Lua Chon Khong Hop Le Vui Long Nhap lai\n");
             }
-
         }
-    }
-        while (luachon!=0);
+    }while (luachon!=0);
     return 0;
 }
