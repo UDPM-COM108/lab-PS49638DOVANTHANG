@@ -136,7 +136,7 @@ void chucnang4(){
         TIEN+=300*2834;
         TIEN+=(k-400)*2927;
     }
-    printf("TIEN DIEN = %d VND",TIEN);
+    printf("TIEN DIEN = %d VND\n",TIEN);
 }
 
 //Nhap vao so tien can doi ==> menh gia tien duoc doi ra
