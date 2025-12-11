@@ -183,14 +183,16 @@ printf("\n--------------------------------------------\n");
 
 //nhap vao so tien muon vay ngan hang ==> so tien can tra trong 12 thang
 void chucnang6(){
-    int sotienvay,tiengoc1thang,tienlai1thang;
-    printf("so tien vay tra gop trong 12 thang la:");
-    scanf("%d",&sotienvay);
-    tiengoc1thang=sotienvay/12;
-    for (int i = 1; i <= 12; i++){
-        tienlai1thang=sotienvay*0.05;
-        printf("So tien can tra Ky %d la: %d\n",i,tiengoc1thang+tienlai1thang);
-        sotienvay-=tiengoc1thang;
+    int tienvay,lai,i,tienvayhangthang;
+    printf("nhap vao so tien vay: ");
+    scanf("%d",&tienvay);
+    tienvayhangthang=tienvay/12;
+    for (int i = 1; i <=12; i++){
+        lai=tienvay*0.05;
+        printf("%-2s %-10s %-10s %-10s %-10s\n","ky han__",
+    "lai phai tra__","goc phai tra__","so tien phai tra__","so tien con lai__");
+        printf("%-10d %-14d %-14d %-17d %d\n",i,lai,
+    tienvayhangthang,tienvayhangthang+lai,tienvay-=tienvayhangthang);
     }
     printf("\n--------------------------------------------\n");
 
