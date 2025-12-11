@@ -4,7 +4,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 
-//____________________________________cac ham chuc nang cua menu_______________________________
+//_____________________________________________________cac ham chuc nang cua menu__________________________________________________________________________
 
 //nhap vao 1 so nguyen ==> kiem tra so nguyen,so nguyen to,so chinh phuong
 void chucnang1(){
@@ -43,6 +43,8 @@ void chucnang1(){
         printf("%f khong la so nguyen to\n",n);
         printf("%f khong la so chinh phuong\n",n);
     }
+    printf("\n--------------------------------------------\n");
+
 }
 
 //nhap vao 2 so nguyen ==> tim UCLN va BCNN cua 2 so da nhap
@@ -76,6 +78,8 @@ void chucnang2(){
         min++;
     }
     printf("BCNN la %d\n",min);
+printf("\n--------------------------------------------\n");
+
 }
 
 //nhap vao gio bat dau va gio ket thuc ==> gia tien can thanh toan
@@ -96,6 +100,8 @@ void chucnang3(){
         cost*=0.9;
     }
     printf("So tien can thanh toan la: %d \n ",cost);
+printf("\n--------------------------------------------\n");
+
 }
 
 // nhap vao so dien kwh ==> tien dien
@@ -137,6 +143,8 @@ void chucnang4(){
         TIEN+=(k-400)*2927;
     }
     printf("TIEN DIEN = %d VND\n",TIEN);
+printf("\n--------------------------------------------\n");
+
 }
 
 //Nhap vao so tien can doi ==> menh gia tien duoc doi ra
@@ -169,6 +177,8 @@ void chucnang5(){
         soto2=2;
         printf("Tien sau khi doi la %d to %d va %d to %d \n",soto1,to1,soto2,to2);     
     }
+printf("\n--------------------------------------------\n");
+
 }
 
 //nhap vao so tien muon vay ngan hang ==> so tien can tra trong 12 thang
@@ -182,6 +192,8 @@ void chucnang6(){
         printf("So tien can tra Ky %d la: %d\n",i,tiengoc1thang+tienlai1thang);
         sotienvay-=tiengoc1thang;
     }
+    printf("\n--------------------------------------------\n");
+
 }
 
 //nhap vao so phan tram vay toi da(so phan tram tra gop) ==> so tien tra truoc va so tien tra hang thang cho den het ky han vay
@@ -193,20 +205,22 @@ void chucnang7(){
     trahangthang=(500000000-tratruoc)/(24*12);
     printf("so tien can tra truoc la %.2f\n",tratruoc);
     printf("so tien tra hang thang %.2f\n",trahangthang*(1+(0.15/12)));
+    printf("\n--------------------------------------------\n");
+
 }
 
 //nhap vao ho ten va diem cua sinh vien ==> xuat ra danh sach sinh vien giam dan
+struct SinhVien {
+    char ten[50];
+    float diem;
+    char hocluc[20];
+};
 void chucnang8(){
     //nhap danh sach
     int n;
     printf("Nhap so sinh vien: ");
     scanf("%d", &n);
     getchar();
-    struct SinhVien {
-        char ten[50];
-        float diem;
-        char hocluc[20];
-    };
     struct SinhVien sv[n];
     for (int i = 0; i < n; i++) {
         printf("\nNhap ten sinh vien %d: ", i + 1);
@@ -250,6 +264,7 @@ void chucnang8(){
     }
     printf("\n--------------------------------------------\n");
 }
+
 //nhap vao 2 so (1-15)==> hien thi thong tin trung giai
 void chucnang9(){
     int so1,so2,sotrung1,sotrung2;
@@ -275,6 +290,8 @@ void chucnang9(){
         printf("Chuc mung ban da trung GIAI NHI\n");
     else
         printf("Chuc ban may man lan sau\n");
+    printf("\n--------------------------------------------\n");
+
 }
 
 //nhap vao 2 phan so ==> tong hieu tich thuong cua 2 phan so
@@ -310,6 +327,8 @@ void chucnang10(){
     printf("Tru : %d/%d\n", trutu, trumau);
     printf("Nhan: %d/%d\n", nhantu, nhanmau);
     printf("Chia: %d/%d\n", chiatu, chiamau);
+    printf("\n--------------------------------------------\n");
+
 }
 
 //menu
@@ -317,6 +336,7 @@ int main(){
 //_______________________________________________Menu chuc nang_______________________________________________
     int luachon;
     do{
+        printf("\n--------------------------------------------\n");
         printf("Welcome to 22_PS49638_DOVANTHANG_ASM2_COM108.\n");
         printf("_____________________________________________\n");
         printf("Chuc nang so 1: Kiem Tra So Nguyen.\n");
